@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'New Person'">New Person</title>
+    <style>
+        table {
+            border-spacing: 0 10px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: bold;
+        }
+
+        th {
+            padding: 10px 20px;
+            background: #17d8ec;
+            color: #06466c;
+            border-right: 2px solid;
+            font-size: 0.9em;
+        }
+
+        th:first-child {
+            text-align: left;
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+        td {
+            vertical-align: middle;
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+            border-top: 2px solid #17d8ec;
+            border-bottom: 2px solid #17d8ec;
+            border-right: 2px solid #17d8ec;
+        }
+
+        td:first-child {
+            border-left: 2px solid #17d8ec;
+            border-right: none;
+        }
+
+        td:nth-child(2) {
+            text-align: left;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #17d8ec;
+            color: #06466c;
+            border: none;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #06466c;
+            color: #17d8ec;
+        }
+
+        a {
+            color: #17d8ec;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>New Person</h1>
+<form th:action="@{/people/create}" method="post">
+    <table>
+        <tr>
+            <th>Name:</th>
+            <td><input type="text" id="name" name="name" required /></td>
+        </tr>
+        <tr>
+            <th>Lastname:</th>
+            <td><input type="text" id="lastname" name="lastname" required /></td>
+        </tr>
+        <tr>
+            <th>Age:</th>
+            <td><input type="number" id="age" name="age" required /></td>
+        </tr>
+    </table>
+    <button type="submit">Save</button>
+</form>
+<br>
+<a th:href="@{/people}">Вернуться к пользователям</a>
+</body>
+</html>

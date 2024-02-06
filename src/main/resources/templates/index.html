@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>People</title>
+</head>
+<body>
+
+<style>table {
+    border-spacing: 0 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+th {
+    padding: 10px 20px;
+    background: #17d8ec;
+    color: #06466c;
+    border-right: 2px solid;
+    font-size: 0.9em;
+}
+
+th:first-child {
+    text-align: left;
+}
+
+th:last-child {
+    border-right: none;
+}
+
+td {
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    border-top: 2px solid #17d8ec;
+    border-bottom: 2px solid #17d8ec;
+    border-right: 2px solid #17d8ec;
+}
+
+td:first-child {
+    border-left: 2px solid #17d8ec;
+    border-right: none;
+}
+
+td:nth-child(2) {
+    text-align: left;
+}</style>
+
+<br/>
+<br/>
+<table class="table_blur">
+    <tr>
+        <th colspan="5" text-align="center">Пользователи</th>
+    </tr>
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Возраст</th>
+        <th>     </th>
+    </tr>
+
+    <tr th:each="person : ${person}">
+        <td><a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getId()}">user</a></td>
+        <td><a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getName()}">user</a></td>
+        <td><a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getLastname()}">user</a></td>
+        <td><a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getAge()}">user</a></td>
+        <td><a th:href="@{/people/{id}/edit(id=${person.getId()})}">Изменить</a></td>
+    </tr>
+</table>
+
+<br/>
+<table>
+    </tr>
+    <td>
+        <form action="/people/new">
+            <button type="submit">Добавить нового пользователя</button>
+        </form>
+    </td>
+
+    <td>
+        <form action="/people">
+            <button type="submit">Показать всех пользователей</button>
+        </form>
+    </td>
+    </tr>
+</table>
+</body>
+</html>

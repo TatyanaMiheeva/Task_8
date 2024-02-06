@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update person</title>
+</head>
+
+<style>
+    table {
+        border-spacing: 0 10px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+    }
+    th {
+        padding: 10px 20px;
+        background: #17d8ec;
+        color: #06466c;
+        border-right: 2px solid;
+        font-size: 0.9em;
+    }
+    th:first-child {
+        text-align: left;
+    }
+    th:last-child {
+        border-right: none;
+    }
+    td {
+        vertical-align: middle;
+        padding: 10px;
+        font-size: 14px;
+        text-align: center;
+        border-top: 2px solid #17d8ec;
+        border-bottom: 2px solid #17d8ec;
+        border-right: 2px solid #17d8ec;
+    }
+    td:first-child {
+        border-left: 2px solid #17d8ec;
+        border-right: none;
+    }
+    td:nth-child(2){
+        text-align: left;
+    }</style>
+
+<body>
+<table class="table_blur">
+    <tr>
+        <th colspan="4" text-align="center"> </th>
+    </tr>
+    <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Возраст</th>
+        <th>     </th>
+    </tr>
+    <tr>
+        <form th:method="patch" th:action="@{/people/{id}(id=${people.getId()})}" th:object="${people}">
+            <td><input type="text" th:field="*{name}" id="name"/></td>
+            <td><input type="text" th:field="*{lastname}" id="lastname"/></td>
+            <td><input type="text" th:field="*{age}" id="age"/></td>
+            <td><input type="submit" value="Изменить"/></td>
+        </form>
+    </tr>
+</table>
+</body>
+</html>
